@@ -1,0 +1,68 @@
+body {
+    font-family: "press Start 2P", "consolas", sans-serif;
+    font-size: 10px;
+    background-color: #c8b5de;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.grid {
+    height: 90vh;
+    width: 90%;
+    display: grid;
+    margin: 20px auto;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+    grid-template-areas:
+        "hdr hdr hdr hdr  hdr hdr hdr hdr  hdr hdr hdr hdr"
+        "hr hr hr hr  hr hr hr hr  hr hr hr hr"
+        "ad ad ad ad  ad ad ad ad  ad ad ad ad"
+        "bdy bdy bdy bdy  bdy bdy bdy bdy  bdy bdy bdy bdy"
+        "sb sb sb sb  sb sb sb sb  sb sb sb sb"
+        "ftr ftr ftr ftr  ftr ftr ftr ftr  ftr ftr ftr ftr";
+}
+
+.header > div, .hero > div, .ad, .body > div, .sidebar-feat, .footer {
+    background-color: #fff;
+    border: 5px solid #000;
+    border-radius: 25px;
+    padding: 10px;
+}
+.header{
+    grid-area: hdr;
+    display: grid;
+    grid-template-columns: 4fr 4fr 4fr;
+    grid-template-areas: "brand nav tools";
+}
+.brand{ grid-area: brand; }
+.nav{ grid-area: nav; justify-self: center; }
+.tools{ grid-area: tools; justify-self: end; }
+
+.hero{
+    grid-area: hr;
+    display:grid;
+    grid-template-columns: 8fr 4fr;
+    grid-template-areas: "hero-feat hero-action";
+}
+.hero-feat{ grid-area: hero-feat; }
+.hero-action{ grid-area: hero-action; justify-self: end; }
+
+.ad{
+    grid-area: ad;
+}
+.body{
+    grid-area: bdy;
+    display: grid;
+    grid-template-columns: 6fr 6fr;
+    grid-template-areas: "article-feat article-list";
+}
+.article-feat{ grid-area: article-feat; }
+.article-list{ grid-area: article-list; justify-self: end; }
+
+.sidebar-feat{
+    grid-area: sb;
+}
+.footer{
+    grid-area: ftr;
+}
