@@ -19,17 +19,23 @@ img {
 }
 
 /*style rules that will apply to ads ??????????????????????? ADD HOVER*/
-[class^="ad"] {
+.ad-box {
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    border: 5px solid #000;
-    border-radius: 20px;
+    hover img {
+        transform: scale(1.1);
+        transition: transform 0.3s ease;
+    }
+}
+.ad-box:hover img {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
 }
 
 /*style for boxes*/
- .header > div, .hero > div, .ad, .body > div, .sidebar-feat, .footer {
+ .header > div, .hero > div, .ad-deskt, .body > div, .sidebar-feat, .footer {
     background: #fff;
     border: 5px solid #000;
     border-radius: 20px;
@@ -38,7 +44,6 @@ img {
 
 /*basic grid container style - this would be for mobile -> stacking 1 column*/
 .grid {
-    height: auto;
     width: 90%;
     display: grid;
     margin: 20px auto;
@@ -132,7 +137,6 @@ img {
 .sidebar-feat {
     display: block;
     display:grid;
-    height:100%;
 }
 }
 /*desktop*/
@@ -154,8 +158,7 @@ img {
 .hero .hero-feat { display: block;}
 
 .ad-deskt {
-    display: block;
-    display: grid;
+    display: grid; /*this overrides the previous display none*/
     grid-area: ad-deskt;
 }
 .ad-mob {
