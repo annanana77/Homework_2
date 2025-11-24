@@ -18,22 +18,24 @@ img {
     display: block; /* removes weird spacing */
 }
 
-/*style rules that will apply to ads ??????????????????????? ADD HOVER*/
+/*style rules that will apply to ads*/
 .ad-box {
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    hover img {
-        transform: scale(1.1);
-        transition: transform 0.3s ease;
-    }
 }
+
 .ad-box:hover img {
     transform: scale(1.1);
     transition: transform 0.3s ease;
 }
-
+.ad-box img {
+    transition: transform 0.35s ease;
+}
+.ad-box:hover img {
+    transform: scale(1.12);
+}
 /*style for boxes*/
  .header > div, .hero > div, .ad-deskt, .body > div, .sidebar-feat, .footer {
     background: #fff;
