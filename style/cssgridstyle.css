@@ -9,6 +9,7 @@ body {
     background-color: #c8b5de;
     margin: 0;
     padding: 0;
+    text-align: center;
 }
 
 img {
@@ -23,6 +24,16 @@ img {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    border: 5px solid #000;
+    border-radius: 20px;
+}
+
+/*style for boxes*/
+ .header > div, .hero > div, .ad, .body > div, .sidebar-feat, .footer {
+    background: #fff;
+    border: 5px solid #000;
+    border-radius: 20px;
+    padding: 10px;
 }
 
 /*basic grid container style*/
@@ -31,7 +42,7 @@ img {
     width: 90%;
     display: grid;
     margin: 20px auto;
-    gap: 10px;
+    gap: 20px;
     grid-template-columns: 1fr;
     grid-template-areas:
         "header"
@@ -40,15 +51,7 @@ img {
         "ad"
         "footer";
 }
-
-/*style for boxes*/
- .header > div, .hero > div, .ad, .body > div, .sidebar-feat, .footer {
-    background: #fff;
-    border: 5px solid #000;
-    border-radius: 25px;
-    padding: 10px;
-}
-.grid .header {
+.header {
     grid-area: header;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -97,10 +100,62 @@ img {
 /*tablet*/
 @media (min-width: 576px) {
 .grid {
-    grid-template-columns: repeat( 1fr;
+    grid-template-areas:
+        "header"
+        "hero"
+        "body"
+        "sidebar-feat"
+        "footer";
+}
+.header {
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas: 
+    "brand nav tools";
+}
+.hero {
+    grid-template-areas: 
+    "hero-feat"
+    "hero-action";
+}
+.hero .hero-feat { display: block; }
+.body {
+    grid-template-columns: 1fr 200px;
+    grid-template-areas:
+    "article-feat ad"
+    "article-list article-list";
+}
+.sidebar-feat {
+    display: block;
+    display:grid;
+    height:100%;
+}
+}
+/*desktop*/
+@media (min-width: 992px) {
+.grid {
+    grid-template-columns: 1fr 350px;
     grid-template-areas:
         "header header"
-        "hero hero"
-        "body ad"
+        "hero ad"
+        "body sidebar-feat"
         "footer footer";
+}
+.hero {
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: 
+    "hero-feat hero-action";
+}
+.hero .hero-feat { display: block;}
+
+.ad-deskt {
+    display: block;
+}
+.ad-mob {
+    display: none;
+}
+.body{
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas:
+    "article-feat article-list"
+}
 }
