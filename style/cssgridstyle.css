@@ -36,7 +36,7 @@ img {
     padding: 10px;
 }
 
-/*basic grid container style*/
+/*basic grid container style - this would be for mobile -> stacking 1 column*/
 .grid {
     height: auto;
     width: 90%;
@@ -87,7 +87,7 @@ img {
 
 .sidebar-feat {
     grid-area: sidebar-feat;
-    display: none;
+    display: none; /*sidebar is hidden on mobile*/
 }
 .footer {
     grid-area: footer;
@@ -95,34 +95,39 @@ img {
 /* hiding the desktop ad on mobile */
 .ad-deskt {
     display: none;
+    grid-area: ad-deskt;
 }
+
 /*media queries for larger screens*/
 /*tablet*/
 @media (min-width: 576px) {
 .grid {
+    grid-template-columns: repeat(6, 1fr);
     grid-template-areas:
-        "header"
-        "hero"
-        "body"
-        "sidebar-feat"
-        "footer";
-}
+        "header header header header header header"
+        "hero hero hero hero hero hero"
+        "ad    ad    ad    ad    ad    ad"
+        "body  body  body  body  body  body"
+        "sidebar-feat sidebar-feat sidebar-feat sidebar-feat sidebar-feat sidebar-feat"
+        "footer footer footer footer footer footer";
+    }
 .header {
     grid-template-columns: 1fr 2fr 1fr;
     grid-template-areas: 
     "brand nav tools";
 }
 .hero {
+    grid-template-columns: 1fr;
     grid-template-areas: 
     "hero-feat"
     "hero-action";
 }
-.hero .hero-feat { display: block; }
+.hero .hero-feat { display: block; } /*now we see it*/
 .body {
-    grid-template-columns: 1fr 200px;
+    grid-template-columns: repeat(6, 1fr);
     grid-template-areas:
-    "article-feat ad"
-    "article-list article-list";
+    "article-feat article-feat article-feat article-feat ad ad"
+    "article-list article-list article-list article-list article-list article-list";
 }
 .sidebar-feat {
     display: block;
@@ -133,15 +138,16 @@ img {
 /*desktop*/
 @media (min-width: 992px) {
 .grid {
-    grid-template-columns: 1fr 350px;
+    grid-template-columns: repeat(12, 1fr);
     grid-template-areas:
-        "header header"
-        "hero ad"
-        "body sidebar-feat"
-        "footer footer";
+        "header header header header header header header header header header header header"
+        "hero hero hero hero hero hero hero hero ad-deskt ad-deskt ad-deskt ad-deskt"
+        "body body body body body body body body sidebar-feat sidebar-feat sidebar-feat sidebar-feat"
+        "footer footer footer footer footer footer footer footer footer footer footer footer";
 }
 .hero {
-    grid-template-columns: 2fr 1fr;
+    display:grid;
+    grid-template-columns: 8fr 4fr;
     grid-template-areas: 
     "hero-feat hero-action";
 }
@@ -149,13 +155,15 @@ img {
 
 .ad-deskt {
     display: block;
+    display: grid;
+    grid-area: ad-deskt;
 }
 .ad-mob {
     display: none;
 }
 .body{
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 4fr 8fr;
     grid-template-areas:
-    "article-feat article-list"
+    "article-feat article-list";
 }
 }
