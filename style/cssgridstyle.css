@@ -9,7 +9,6 @@ body {
     background-color: #c8b5de;
     margin: 0;
     padding: 0;
-    text-align: center;
 }
 
 img {
@@ -24,11 +23,10 @@ img {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    transition: box-shadow 0.35s ease;
 }
-
-.ad-box:hover img {
-    transform: scale(1.1);
-    transition: transform 0.3s ease;
+.ad-box:hover {
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
 }
 .ad-box img {
     transition: transform 0.35s ease;
@@ -36,12 +34,15 @@ img {
 .ad-box:hover img {
     transform: scale(1.12);
 }
-/*style for boxes*/
+
+/*generic style for boxes*/
  .header > div, .hero > div, .ad-deskt, .body > div, .sidebar-feat, .footer {
     background: #fff;
     border: 5px solid #000;
     border-radius: 20px;
     padding: 10px;
+    margin: 5px;
+    text-align: center;
 }
 
 /*basic grid container style - this would be for mobile -> stacking 1 column*/
@@ -55,7 +56,6 @@ img {
         "header"
         "hero"
         "body"
-        "ad"
         "footer";
 }
 .header {
@@ -102,14 +102,13 @@ img {
 /* hiding the desktop ad on mobile */
 .ad-deskt {
     display: none;
-    grid-area: ad-deskt;
 }
 
 /*media queries for larger screens*/
 /*tablet*/
 @media (min-width: 576px) {
 .grid {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(6, 1fr); /*6 is suggested for tablets, more simple than 12 desktop*/
     grid-template-areas:
         "header header header header header header"
         "hero hero hero hero hero hero"
@@ -130,6 +129,7 @@ img {
     "hero-action";
 }
 .hero .hero-feat { display: block; } /*now we see it*/
+
 .body {
     grid-template-columns: repeat(6, 1fr);
     grid-template-areas:
@@ -137,8 +137,7 @@ img {
     "article-list article-list article-list article-list article-list article-list";
 }
 .sidebar-feat {
-    display: block;
-    display:grid;
+    display:grid; /*this overrides the previous display none*/
 }
 }
 /*desktop*/
@@ -152,7 +151,6 @@ img {
         "footer footer footer footer footer footer footer footer footer footer footer footer";
 }
 .hero {
-    display:grid;
     grid-template-columns: 8fr 4fr;
     grid-template-areas: 
     "hero-feat hero-action";
